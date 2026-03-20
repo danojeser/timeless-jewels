@@ -433,25 +433,21 @@ export const constructQuery = (jewel: number, conqueror: string, result: SearchW
       });
     }
   } else {
-    for (const conq of Object.keys(tradeStatNames[jewel])) {
-      stat.disabled = conq != conqueror;
-
-      for (const r of result) {
-        stat.filters.push({
-          id: tradeStatNames[jewel][conq],
-          value: {
-            min: r.seed,
-            max: r.seed
-          }
-        });
-      }
-
-      if (stat.filters.length > max_filter_length) {
-        stat.filters = stat.filters.slice(0, max_filter_length);
-      }
-
-      final_query.push(stat);
+    for (const r of result) {
+      stat.filters.push({
+        id: tradeStatNames[jewel][conqueror],
+        value: {
+          min: r.seed,
+          max: r.seed
+        }
+      });
     }
+
+    if (stat.filters.length > max_filter_length) {
+      stat.filters = stat.filters.slice(0, max_filter_length);
+    }
+
+    final_query.push(stat);
   }
 
   return {
