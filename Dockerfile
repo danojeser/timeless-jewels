@@ -43,7 +43,7 @@ FROM nginx:stable-alpine
 RUN echo 'types { application/wasm wasm; }' >> /etc/nginx/mime.types
 
 # Copiar el sitio estático construido
-COPY --from=frontend-builder /app/frontend/build /usr/share/nginx/html/timeless-jewels
+COPY --from=frontend-builder /app/frontend/build /usr/share/nginx/html
 
 # Copiar configuración personalizada de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
