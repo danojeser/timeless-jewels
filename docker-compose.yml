@@ -1,0 +1,9 @@
+services:
+  timeless-jewels:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: timeless-jewels
+    ports:
+      - "8080:80"      # Cambia 8080 por el puerto que prefieras en tu red
+    restart: unless-stopped
